@@ -26,8 +26,10 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 33
+    buildToolsVersion "33.0.0"
     ndkVersion flutter.ndkVersion
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -39,8 +41,8 @@ android {
         applicationId "com.example.sampleflutter"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 16
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled = true
@@ -60,6 +62,9 @@ flutter {
 }
 
 dependencies {
+
+    // This dependency avoids a known issue related to building for Android >= 31
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation ('com.github.pngme:android-sdk:v2.0.4')
     implementation("androidx.multidex:multidex:2.0.1")
