@@ -24,6 +24,7 @@ public class MainActivity extends FlutterActivity {
                 String externalId = call.argument("externalId");
                 boolean isKycVerified = call.argument("isKycVerified");
                 String companyName = call.argument("companyName");
+                boolean hidePngmeDialog = call.argument("hidePngmeDialog");
 
                 Intent intent = new Intent(this.getContext(), PngmeSDKHelper.class);
                 intent.putExtra("sdkToken", sdkToken);
@@ -34,6 +35,7 @@ public class MainActivity extends FlutterActivity {
                 intent.putExtra("externalId", externalId);
                 intent.putExtra("isKycVerified", isKycVerified);
                 intent.putExtra("companyName", companyName);
+                intent.putExtra("hidePngmeDialog", hidePngmeDialog);
 
                 this.getActivity().startActivity(intent);
 
