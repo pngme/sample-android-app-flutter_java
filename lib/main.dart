@@ -51,7 +51,8 @@ class _BodyWidgetState extends State<BodyWidget> {
         'phoneNumber': '2348118445990',
         'externalId': '',
         'isKycVerified': false,
-        'companyName': 'AcmeInc'
+        'companyName': 'AcmeInc',
+        'hidePngmeDialog': false,
       });
       print(value);
     } catch (e) {
