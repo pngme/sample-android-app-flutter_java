@@ -19,7 +19,6 @@ public class PngmeSDKHelper extends AppCompatActivity {
     String email = this.getIntent().getStringExtra("email");
     String phoneNumber = this.getIntent().getStringExtra("phoneNumber");
     String externalId = this.getIntent().getStringExtra("externalId");
-    boolean isKycVerified = this.getIntent().getBooleanExtra("isKycVerified", false);
     String companyName = this.getIntent().getStringExtra("companyName");
     boolean hidePngmeDialog = this.getIntent().getBooleanExtra("hidePngmeDialog", false);
 
@@ -31,7 +30,6 @@ public class PngmeSDKHelper extends AppCompatActivity {
         email,
         phoneNumber,
         externalId,
-        isKycVerified,
         companyName,
         hidePngmeDialog,
         this::onComplete);

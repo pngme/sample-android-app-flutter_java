@@ -22,7 +22,6 @@ public class MainActivity extends FlutterActivity {
                 String email = call.argument("email");
                 String phoneNumber = call.argument("phoneNumber");
                 String externalId = call.argument("externalId");
-                boolean isKycVerified = call.argument("isKycVerified");
                 String companyName = call.argument("companyName");
                 boolean hidePngmeDialog = call.argument("hidePngmeDialog");
 
@@ -33,7 +32,6 @@ public class MainActivity extends FlutterActivity {
                 intent.putExtra("email", email);
                 intent.putExtra("phoneNumber", phoneNumber);
                 intent.putExtra("externalId", externalId);
-                intent.putExtra("isKycVerified", isKycVerified);
                 intent.putExtra("companyName", companyName);
                 intent.putExtra("hidePngmeDialog", hidePngmeDialog);
 
