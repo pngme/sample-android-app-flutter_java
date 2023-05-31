@@ -1,14 +1,3 @@
-<p align="center">
-  <img src="https://admin.pngme.com/logo.png" alt="Pngme" width="100" height="100">
-  <h3 align="center">Pngme Android (Flutter) Integration & Sample App</h3>
-</p>
-
-This documentation covers how to use the Kotlin SDK v2.x with Flutter.
-
-You can find similar documentation for [Expo](https://github.com/pngme/sample-android-app-react-native-expo), [Flutter-Kotlin](https://github.com/pngme/sample-android-app-flutter), [Kotlin](https://github.com/pngme/sample-android-app-kotlin) and [React Native](https://github.com/pngme/sample-android-app-react-native).
-
-> Pngme does not currently provide a native Flutter (Dart) SDK but the Kotlin SDK is compatible with Flutter apps using the following steps.
-
 ## Setup
 
 1. The SDK supports Android API version 16+
@@ -27,8 +16,6 @@ You can find similar documentation for [Expo](https://github.com/pngme/sample-an
 After integrating the SDK, financial data will be accessible in the [Pngme Dashboard](https://admin.pngme.com/users) and via the [Pngme REST APIs](https://developers.api.pngme.com/reference/).
 
 ## Integrating the SDK
-
-This sample app assumes you have Android Studio installed and your local environment is [configured for Flutter development](https://docs.flutter.dev/get-started/install).
 
 ### Step 1
 
@@ -59,7 +46,7 @@ Add the following dependencies to `/android/app/build.gradle`.
 ```groovy
 dependencies {
     // add from here
-    implementation 'com.github.pngme:android-sdk:v3.2.0'
+    implementation 'com.github.pngme:android-sdk:v5.0.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     // to here
@@ -116,7 +103,21 @@ value = await sdkChannel.invokeMethod("go", <String, dynamic>{
         'phoneNumber': '2348118445990',
         'externalId': '',
         'companyName': 'AcmeInc',
-        'hidePngmeDialog': boolean // defaults to false
+      });
+```
+
+If you would like to use your own onboarding flow in which a user is presented with Pngme's terms & conditions and privacy policy, you can use the `goWithCustomDialog` method.
+
+```dart
+value = await sdkChannel.invokeMethod("goWithCustomDialog", <String, dynamic>{
+        'sdkToken': 'XXXXXXX',
+        'firstName': 'Nico',
+        'lastName': 'Rico',
+        'email': 'nicorico@pngme.com',
+        'phoneNumber': '2348118445990',
+        'externalId': '',
+        'companyName': 'AcmeInc',
+        'hasAcceptedTerms': true, // default is false
       });
 ```
 
@@ -133,23 +134,9 @@ value = await sdkChannel.invokeMethod("go", <String, dynamic>{
 | `phoneNumber`   | the mobile phone user's phone number, example `"23411234567"`                                           |
 | `externalId`    | a unique identifier for the user provided by your app; if none available, pass an empty string `""`     |
 | `companyName`   | your company's name, used in the display header of the [SMS Permission Flow](.docs/permission_flow.gif) |
-| hidePngmeDialog | a boolean, indicating if the Pngme dialog should be hidden in the permissions UI flow                   |
+| `hasAcceptedTerms` | Set the value to 'true' if the user has accepted the terms and conditions when invoking the 'goWithCustomDialog' method. Defaults to false                   |
 
 ## PngmeSDK API
-
-### `resetPermissionFlow()`
-
-```kotlin
-fun resetPermissionFlow(context: Context)
-```
-
-| Field   | Description             |
-| ------- | ----------------------- |
-| context | the current app Context |
-
-The [Permission Dialog Flow](.docs/permission_flow.gif) will only run the first time that the `go` method is invoked.
-If your app needs to implement logic to show the Dialog Flow again,
-then you can reset the permission flow by calling `resetPermissionFlow`.
 
 ### `isPermissionGranted()`
 
