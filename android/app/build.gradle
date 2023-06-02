@@ -63,9 +63,7 @@ flutter {
 
 dependencies {
 
-    // This dependency avoids a known issue related to building for Android >= 31
-    implementation 'androidx.work:work-runtime-ktx:2.7.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation ('com.github.pngme:android-sdk:v4.0.2')
+    implementation ('com.github.pngme:android-sdk:v5.0.0')
     implementation("androidx.multidex:multidex:2.0.1")
 }

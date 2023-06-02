@@ -20,7 +20,6 @@ public class PngmeSDKHelper extends AppCompatActivity {
     String phoneNumber = this.getIntent().getStringExtra("phoneNumber");
     String externalId = this.getIntent().getStringExtra("externalId");
     String companyName = this.getIntent().getStringExtra("companyName");
-    boolean hidePngmeDialog = this.getIntent().getBooleanExtra("hidePngmeDialog", false);
 
     PngmeSdk.INSTANCE.go(
         this,
@@ -31,7 +30,6 @@ public class PngmeSDKHelper extends AppCompatActivity {
         phoneNumber,
         externalId,
         companyName,
-        hidePngmeDialog,
         this::onComplete);
   }
 
