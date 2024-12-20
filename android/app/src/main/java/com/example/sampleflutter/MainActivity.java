@@ -15,7 +15,7 @@ public class MainActivity extends FlutterActivity {
     new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
         .setMethodCallHandler(
             (call, result) -> {
-              if (call.method.equals("go")) {
+              if (call.method.equals("goWithCustomDialog")) {
                 String sdkToken = call.argument("sdkToken");
                 String firstName = call.argument("firstName");
                 String lastName = call.argument("lastName");
@@ -23,7 +23,7 @@ public class MainActivity extends FlutterActivity {
                 String phoneNumber = call.argument("phoneNumber");
                 String externalId = call.argument("externalId");
                 String companyName = call.argument("companyName");
-                boolean hidePngmeDialog = call.argument("hidePngmeDialog");
+                boolean hasAcceptedTerms = call.argument("hasAcceptedTerms");
 
                 Intent intent = new Intent(this.getContext(), PngmeSDKHelper.class);
                 intent.putExtra("sdkToken", sdkToken);
@@ -33,7 +33,7 @@ public class MainActivity extends FlutterActivity {
                 intent.putExtra("phoneNumber", phoneNumber);
                 intent.putExtra("externalId", externalId);
                 intent.putExtra("companyName", companyName);
-                intent.putExtra("hidePngmeDialog", hidePngmeDialog);
+                intent.putExtra("hasAcceptedTerms", hasAcceptedTerms);
 
                 this.getActivity().startActivity(intent);
 
