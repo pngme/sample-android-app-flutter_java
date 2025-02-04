@@ -20,7 +20,7 @@ public class PngmeSDKHelper extends AppCompatActivity {
     String phoneNumber = this.getIntent().getStringExtra("phoneNumber");
     String externalId = this.getIntent().getStringExtra("externalId");
     String companyName = this.getIntent().getStringExtra("companyName");
-    Boolean hasAcceptedTerms =this.getIntent().getStringExtra("hasAcceptedTerms");
+    Boolean hasAcceptedTerms = this.getIntent().getBooleanExtra("hasAcceptedTerms", false);
 
     PngmeSdk.INSTANCE.goWithCustomDialog(
         this,
